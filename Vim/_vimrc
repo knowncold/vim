@@ -1,0 +1,119 @@
+set nocompatible
+" set the language of gui
+let $LANG = 'en'  "set message language  
+set langmenu=en   "set menu's language of gvim. no spaces beside '='  
+source $VIMRUNTIME/vimrc_example.vim
+source $VIMRUNTIME/mswin.vim
+behave mswin
+
+syntax enable
+syntax on
+
+set encoding=utf-8
+set fileencodings=utf-8
+set termencoding=utf-8
+
+" 禁止折行
+set nowrap
+
+" 配色
+set background=dark
+"colorscheme desert
+colorscheme molokai
+"colorscheme phd
+
+
+" 状态栏
+set laststatus=2
+" 显示行列
+set cursorline
+set cursorcolumn
+" 高亮搜索
+set hlsearch
+" 显示行号
+set number
+" 显示光标
+set ruler
+
+
+
+
+
+" vundle
+
+set rtp+=$VIM/vimfiles/bundle/vundle/  
+call vundle#rc('$VIM/vimfiles/bundle/')  
+
+
+
+Plugin 'tpope/vim-fugitive'
+
+Plugin 'L9'
+
+Plugin 'git://git.wincent.com/command-t.git'
+
+Plugin 'wakatime/vim-wakatime'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+
+Plugin 'ascenator/L9', {'name': 'newL9'}
+
+
+filetype plugin indent on    " required
+
+
+
+
+
+
+
+" 开启实时搜索功能
+set incsearch
+" 搜索时大小写不敏感
+set ignorecase
+" 关闭兼容模式
+set nocompatible
+" vim 自身命令行模式智能补全
+set wildmenu
+
+" 禁止光标闪烁
+set gcr=a:block-blinkon0
+" 禁止显示滚动条
+set guioptions-=l
+set guioptions-=L
+set guioptions-=r
+set guioptions-=R
+" 禁止显示菜单和工具条
+set guioptions-=m
+set guioptions-=T
+
+
+" è®©é…ç½®å˜æ›´ç«‹å³ç”Ÿæ•ˆ
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
+
+set diffexpr=MyDiff()
+function MyDiff()
+  let opt = '-a --binary '
+  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+  let arg1 = v:fname_in
+  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+  let arg2 = v:fname_new
+  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+  let arg3 = v:fname_out
+  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+  let eq = ''
+  if $VIMRUNTIME =~ ' '
+    if &sh =~ '\<cmd'
+      let cmd = '""' . $VIMRUNTIME . '\diff"'
+      let eq = '"'
+    else
+      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+    endif
+  else
+    let cmd = $VIMRUNTIME . '\diff'
+  endif
+  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+endfunction
+
+
+set guifont=YaHei\ Consolas\ Hybrid:h11
