@@ -18,9 +18,8 @@ set nowrap
 
 " 配色
 set background=dark
-"colorscheme desert
+"molokai style
 colorscheme molokai
-"colorscheme phd
 
 
 " 状态栏
@@ -40,22 +39,11 @@ set ruler
 
 
 " vundle
-
+filetype off  
 set rtp+=$VIM/vimfiles/bundle/vundle/  
 call vundle#rc('$VIM/vimfiles/bundle/')  
-
-
-
-Plugin 'tpope/vim-fugitive'
-
-Plugin 'L9'
-
-Plugin 'git://git.wincent.com/command-t.git'
-
-Plugin 'wakatime/vim-wakatime'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-
-Plugin 'ascenator/L9', {'name': 'newL9'}
+Bundle 'gmarik/vundle'
+Bundle 'wakatime/vim-wakatime'
 
 
 filetype plugin indent on    " required
@@ -87,7 +75,6 @@ set guioptions-=m
 set guioptions-=T
 
 
-" è®©é…ç½®å˜æ›´ç«‹å³ç”Ÿæ•ˆ
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 set diffexpr=MyDiff()
