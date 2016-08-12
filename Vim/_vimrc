@@ -2,6 +2,7 @@ set nocompatible
 " set the language of gui
 let $LANG = 'en'  "set message language  
 set langmenu=en   "set menu's language of gvim. no spaces beside '='  
+set helplang=cn   "set the help langauge as Chinese
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
@@ -15,7 +16,8 @@ set termencoding=utf-8
 
 " 禁止折行
 set nowrap
-
+" 设置缩进宽度
+set shiftwidth=4
 " 配色
 set background=dark
 "molokai style
@@ -31,11 +33,12 @@ set cursorcolumn
 set hlsearch
 " 显示行号
 set number
+set numberwidth=4
 " 显示光标
 set ruler
-
-
-
+" 设置映射
+map <c-k> dd2kp
+map <c-j> ddp
 
 
 " vundle
@@ -44,14 +47,9 @@ set rtp+=$VIM/vimfiles/bundle/vundle/
 call vundle#rc('$VIM/vimfiles/bundle/')  
 Bundle 'gmarik/vundle'
 Bundle 'wakatime/vim-wakatime'
-
-
+Plugin 'sudar/vim-arduino-syntax'
+Plugin 'vimcn/vimcdoc'
 filetype plugin indent on    " required
-
-
-
-
-
 
 
 " 开启实时搜索功能
@@ -104,3 +102,4 @@ endfunction
 
 
 set guifont=YaHei\ Consolas\ Hybrid:h11
+echom ">^.^<"
