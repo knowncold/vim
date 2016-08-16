@@ -49,6 +49,7 @@ Bundle 'gmarik/vundle'
 Bundle 'wakatime/vim-wakatime'
 Plugin 'sudar/vim-arduino-syntax'
 Plugin 'vimcn/vimcdoc'
+Plugin 'scrooloose/nerdtree'
 filetype plugin indent on    " required
 
 
