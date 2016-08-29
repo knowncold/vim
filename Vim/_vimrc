@@ -18,6 +18,9 @@ set termencoding=utf-8
 set nowrap
 " 设置缩进宽度
 set shiftwidth=4
+set tabstop=4 
+set softtabstop=4 
+set autoindent 
 " 配色
 set background=dark
 "molokai style
@@ -50,9 +53,11 @@ Bundle 'wakatime/vim-wakatime'
 Plugin 'sudar/vim-arduino-syntax'
 Plugin 'vimcn/vimcdoc'
 Plugin 'scrooloose/nerdtree'
+Bundle 'luochen1990/rainbow'
+Bundle 'wlangstroth/vim-racket'
 filetype plugin indent on    " required
 
-
+let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 " 开启实时搜索功能
 set incsearch
 " 搜索时大小写不敏感
