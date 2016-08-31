@@ -46,9 +46,9 @@ map <c-j> ddp
 
 " vundle
 filetype off  
-set rtp+=$VIM/vimfiles/bundle/vundle/  
+set rtp+=$VIM/vimfiles/bundle/Vundle.vim  
 call vundle#rc('$VIM/vimfiles/bundle/')  
-Bundle 'gmarik/vundle'
+Bundle 'VundleVim/Vundle.vim'
 Bundle 'wakatime/vim-wakatime'
 Plugin 'sudar/vim-arduino-syntax'
 Plugin 'vimcn/vimcdoc'
