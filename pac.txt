@@ -2,6 +2,7 @@
 // https://github.com/clowwindy/gfwlist2pac
 
 var domains = {
+  "gitbooks.io":1,
   "wakatime.com":1,
   "github.com":1,
   "pixiv.net":1,
