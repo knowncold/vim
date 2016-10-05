@@ -1,3 +1,20 @@
+" 开启文件类型侦测
+filetype on
+" 根据不同类型来加载对应的插件
+filetype plugin on
+
+" 定义快捷键
+let mapleader=";"
+
+nmap LB 0
+nmap LE $
+
+" 设置文本块复制到系统剪贴板
+vnoremap <Leader>y "+y
+nmap <Leader>p "+p
+
+
+
 set number
 
 set nowrap
@@ -11,8 +28,13 @@ set background=dark
 set laststatus=2
 
 set cursorcolumn
+set cursorline
+
+" colorscheme solarized
+
 set numberwidth=4
 set ruler
+
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -25,7 +47,6 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Bundle 'gmarik/vundle'
 Bundle 'wakatime/vim-wakatime'
 Plugin 'sudar/vim-arduino-syntax'
 Plugin 'vimcn/vimcdoc'
@@ -36,9 +57,11 @@ Bundle 'wlangstroth/vim-racket'
 Bundle 'Raimondi/delimitMate'
 Bundle 'Valloric/YouCompleteMe'
 Plugin 'vim-airline/vim-airline'
+Plugin 'ternjs/tern_for_vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
+let g:rainbow_active = 1
 
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py' 
 
