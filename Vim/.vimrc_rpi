@@ -6,6 +6,8 @@ filetype plugin on
 " 定义快捷键
 let mapleader=";"
 
+syntax enable 
+
 nmap LB 0
 nmap LE $
 
