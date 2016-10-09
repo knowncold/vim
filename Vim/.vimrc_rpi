@@ -1,0 +1,39 @@
+" 开启文件类型侦测
+filetype on
+" 根据不同类型来加载对应的插件
+filetype plugin on
+
+" 定义快捷键
+let mapleader=";"
+
+nmap LB 0
+nmap LE $
+
+" 设置文本块复制到系统剪贴板
+vnoremap <Leader>y "+y
+nmap <Leader>p "+p
+
+
+
+set number
+
+set nowrap
+
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set autoindent
+set background=dark
+
+set laststatus=2
+
+set cursorcolumn
+set cursorline
+
+" colorscheme solarized
+
+set numberwidth=4
+set ruler
+
+
+set nocompatible              " be iMproved, required
