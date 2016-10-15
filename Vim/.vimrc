@@ -30,7 +30,7 @@ set laststatus=2
 set cursorcolumn
 set cursorline
 
-" colorscheme solarized
+colorscheme molokai
 
 set numberwidth=4
 set ruler
@@ -58,10 +58,19 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'Valloric/YouCompleteMe'
 Plugin 'vim-airline/vim-airline'
 Plugin 'ternjs/tern_for_vim'
+Plugin 'uguu-org/vim-matrix-screensaver'
+Plugin 'scrooloose/nerdcommenter'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 let g:rainbow_active = 1
 
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py' 
+let g:rehash256 = 1
+let g:molokai_original=1
+
+let g:airline_powerline_fonts=1
+
+nnoremap <F5>  <Esc>:w<CR>:!g++ -std=c++11 % -o ./%:r && ./%:r<CR>
+nnoremap <F7>  <Esc>:w<CR>:!g++ -std=c++11 %<CR>
 
