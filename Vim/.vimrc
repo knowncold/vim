@@ -60,6 +60,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'uguu-org/vim-matrix-screensaver'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -70,6 +71,9 @@ let g:rehash256 = 1
 let g:molokai_original=1
 
 let g:airline_powerline_fonts=1
+let g:cpp_class_scope_highlight = 1
+let g:cpp_experimental_template_highlight = 1
+let g:cpp_concepts_highlight = 1
 
 nnoremap <F5>  <Esc>:w<CR>:!g++ -std=c++11 % -o ./%:r && ./%:r<CR>
 nnoremap <F7>  <Esc>:w<CR>:!g++ -std=c++11 %<CR>
