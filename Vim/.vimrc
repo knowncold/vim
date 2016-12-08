@@ -13,6 +13,8 @@ nmap LE $
 vnoremap <Leader>y "+y
 nmap <Leader>p "+p
 
+map <F12> :NERDTreeToggle<CR>
+
 
 
 set number
@@ -61,20 +63,49 @@ Plugin 'ternjs/tern_for_vim'
 Plugin 'uguu-org/vim-matrix-screensaver'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'Yggdroot/indentLine'
+Plugin 'terryma/vim-multiple-cursors'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
-let g:rainbow_active = 1
+let g:rainbow_active=1
 
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py' 
 let g:rehash256 = 1
 let g:molokai_original=1
+
+let g:indentLine_setColors = 0
+let g:indentLine_color_term = 23
+let g:indentLine_char = '┊'
+
 
 let g:airline_powerline_fonts=1
 let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 let g:cpp_concepts_highlight = 1
 
-nnoremap <F5>  <Esc>:w<CR>:!g++ -std=c++11 % -o ./%:r && ./%:r<CR>
-nnoremap <F7>  <Esc>:w<CR>:!g++ -std=c++11 %<CR>
+func! RunCode()
+	exec "w"
+	if &filetype == "cpp"
+		exec "!g++ -std=c++11 % -o ./%:r && ./%:r"
+	elseif &filetype == "ino"
+		exec "!arduino --upload %"
+	elseif &filetype == "py"
+		exec "!python %"
+	endif
+endfunc
+
+func! CompileCode()
+	exec "w"
+	if &filetype == "ino"
+		exec "!arduino --verify %"
+	elseif &filetype =="cpp"
+		exec "!g++ -std=c++11 %"
+	endif
+endfunc
+
+nnoremap <F5> :call RunCode()<CR>
+nnoremap <F7> :call CompileCode()<CR>
+"nnoremap <F5>  <Esc>:w<CR>:!arduino --upload %<CR>
+"nnoremap <F7>  <Esc>:w<CR>:!arduino --verify %<CR>
 
