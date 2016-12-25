@@ -94,20 +94,23 @@ func! RunCode()
 		exec "!python %"
 	elseif &filetype == "racket"
 		exec "!racket %"
+	elseif &filetype == "dot"
+		exec "!dot -Tpdf ./% -o ./%:r.pdf"
+	elseif &filetype == "c"
+		exec "!gcc % -o ./%:r && ./%:r"
 	endif
 endfunc
 
 func! CompileCode()
 	exec "w"
-	if &filetype == "ino"
+	if &filetype == "arduino"
 		exec "!arduino --verify %"
-	elseif &filetype =="cpp"
+	elseif &filetype == "cpp"
 		exec "!g++ -std=c++11 %"
+	elseif &filetype == "dot"
+		exec "!dot -Tgif ./% -o ./%:r.gif"
 	endif
 endfunc
 
 nnoremap <F5> :call RunCode()<CR>
 nnoremap <F7> :call CompileCode()<CR>
-"nnoremap <F5>  <Esc>:w<CR>:!arduino --upload %<CR>
-"nnoremap <F7>  <Esc>:w<CR>:!arduino --verify %<CR>
-
