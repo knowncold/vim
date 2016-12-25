@@ -76,7 +76,7 @@ let g:molokai_original=1
 
 let g:indentLine_setColors = 0
 let g:indentLine_color_term = 23
-let g:indentLine_char = '┊'
+let g:indentLine_char = '|'
 
 
 let g:airline_powerline_fonts=1
@@ -88,10 +88,12 @@ func! RunCode()
 	exec "w"
 	if &filetype == "cpp"
 		exec "!g++ -std=c++11 % -o ./%:r && ./%:r"
-	elseif &filetype == "ino"
+	elseif &filetype == "arduino"
 		exec "!arduino --upload %"
-	elseif &filetype == "py"
+	elseif &filetype == "python"
 		exec "!python %"
+	elseif &filetype == "racket"
+		exec "!racket %"
 	endif
 endfunc
 
