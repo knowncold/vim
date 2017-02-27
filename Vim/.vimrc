@@ -16,6 +16,8 @@ nmap <Leader>p "+p
 map <F12> :NERDTreeToggle<CR>
 
 
+au BufNewFile,BufRead *.handlebars set filetype=html
+
 
 set number
 
@@ -65,12 +67,14 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'Yggdroot/indentLine'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'rdnetto/YCM-Generator'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 let g:rainbow_active=1
 
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py' 
+let g:ycm_python_binary_path = 'python'
 let g:rehash256 = 1
 let g:molokai_original=1
 
@@ -87,7 +91,7 @@ let g:cpp_concepts_highlight = 1
 func! RunCode()
 	exec "w"
 	if &filetype == "cpp"
-		exec "!g++ -std=c++11 % -o ./%:r && ./%:r"
+		exec "!g++ -std=c++11 % -o %:r && ./%:r"
 	elseif &filetype == "arduino"
 		exec "!arduino --upload %"
 	elseif &filetype == "python"
@@ -95,9 +99,15 @@ func! RunCode()
 	elseif &filetype == "racket"
 		exec "!racket %"
 	elseif &filetype == "dot"
-		exec "!dot -Tpdf ./% -o ./%:r.pdf"
+		exec "!dot -Tpdf ./% -o /%:r.pdf"
 	elseif &filetype == "c"
 		exec "!gcc % -o ./%:r && ./%:r"
+	elseif &filetype == "javascript"
+		exec "!node %"
+	elseif &filetype == "make"
+		exec "!make"
+	elseif &filetype == "markdown"
+		exec "!jekyll serve"
 	endif
 endfunc
 
@@ -109,8 +119,16 @@ func! CompileCode()
 		exec "!g++ -std=c++11 %"
 	elseif &filetype == "dot"
 		exec "!dot -Tgif ./% -o ./%:r.gif"
+	elseif &filetype == "make"
+		exec "!make clean"
 	endif
+endfunc
+
+func! RunMake()
+	exec "w"
+	exec "!make"
 endfunc
 
 nnoremap <F5> :call RunCode()<CR>
 nnoremap <F7> :call CompileCode()<CR>
+nnoremap <F6> :call RunMake()<CR>
