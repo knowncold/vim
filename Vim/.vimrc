@@ -1,3 +1,4 @@
+syntax enable
 " 开启文件类型侦测
 filetype on
 " 根据不同类型来加载对应的插件
