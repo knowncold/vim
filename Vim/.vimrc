@@ -69,6 +69,8 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'Yggdroot/indentLine'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'rdnetto/YCM-Generator'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'javacomplete'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -107,8 +109,8 @@ func! RunCode()
 		exec "!node %"
 	elseif &filetype == "make"
 		exec "!make"
-	elseif &filetype == "markdown"
-		exec "!jekyll serve"
+	elseif &filetype == "java"
+		exec "!javac % && java %:r"
 	endif
 endfunc
 
@@ -122,6 +124,8 @@ func! CompileCode()
 		exec "!dot -Tgif ./% -o ./%:r.gif"
 	elseif &filetype == "make"
 		exec "!make clean"
+	elseif &filetype == "java"
+		exec "!javac %"
 	endif
 endfunc
 
