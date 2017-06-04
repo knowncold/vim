@@ -1,5 +1,0 @@
-{
-	"cmd": ["arduino_debug", "--upload","$file"],
-	"selector": "source.arduino",
-    "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
-}
