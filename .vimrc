@@ -14,7 +14,7 @@ nmap LE $
 vnoremap <Leader>y "+y
 nmap <Leader>p "+p
 
-map <F12> :NERDTreeToggle<CR>
+map <F10> :NERDTreeToggle<CR>
 
 
 au BufNewFile,BufRead *.handlebars set filetype=html
@@ -28,7 +28,6 @@ set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 set autoindent
-set background=dark
 
 set laststatus=2
 
@@ -53,6 +52,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Bundle 'wakatime/vim-wakatime'
+Bundle 'taglist.vim'
 Plugin 'sudar/vim-arduino-syntax'
 Plugin 'vimcn/vimcdoc'
 Plugin 'php.vim'
@@ -81,15 +81,21 @@ let g:ycm_python_binary_path = 'python'
 let g:rehash256 = 1
 let g:molokai_original=1
 
-let g:indentLine_setColors = 0
-let g:indentLine_color_term = 23
-let g:indentLine_char = '|'
-
+let g:indentLine_char = '│'
+let g:indentLine_enabled = 1
 
 let g:airline_powerline_fonts=1
 let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 let g:cpp_concepts_highlight = 1
+
+let Tlist_Auto_Open = 1
+let Tlist_Exit_OnlyWindow = 1
+let Tlist_Use_Right_Window = 1
+autocmd VimEnter * NERDTree
+
+
+
 
 func! RunCode()
 	exec "w"
